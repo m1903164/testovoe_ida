@@ -4,9 +4,13 @@
       <VHeader/>
       <div class="main">
         <div class="form-wrapper">
-          <VForm/>
+          <VForm
+            @create="createProduct"
+          />
         </div>
-        <VProductlist/>
+        <VProductlist 
+          :products="products"
+        />
       </div>     
     </div>
   </div>
@@ -33,36 +37,42 @@ export default {
             title: 'Наименование товара - 1',
             description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
             price: 10000,
-            image: './assets/logo.png'
+            image: 'https://i.imgur.com/w9uvR4T.png'
           },
           {
             id: 2,
             title: 'Наименование товара - 2',
             description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
             price: 10000,
-            image: './assets/logo.png'
+            image: 'https://i.imgur.com/w9uvR4T.png'
+          },
+          {
+            id: 3,
+            title: 'Наименование товара - 3',
+            description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
+            price: 11000,
+            image: 'https://i.imgur.com/w9uvR4T.png'
+          },
+          {
+            id: 4,
+            title: 'Наименование товара - 4',
+            description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
+            price: 12000,
+            image: 'https://i.imgur.com/w9uvR4T.png'
+          },
+          {
+            id: 5,
+            title: 'Наименование товара - 5',
+            description: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
+            price: 13000,
+            image: 'https://i.imgur.com/w9uvR4T.png'
           },
         ],
-        title: '',
-        description: '',
-        price: '',
-        image: '',
       }
     },
     methods: {
-      addToList() {
-        const newProduct = {
-          id: Date.now(),
-          title: this.title,
-          description: this.description,
-          price: this.price,
-          image: this.image,
-        }
-        this.products.push(newProduct);
-        this.title = '';
-        this.description = '';
-        this.price = '';
-        this.image = '';
+      createProduct(product) {
+        this.products.push(product);
       },
     }
 }
