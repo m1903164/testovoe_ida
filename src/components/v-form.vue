@@ -6,8 +6,8 @@
                     type="text" 
                     id="title" 
                     placeholder="Введите наименование товара"
-                    v-bind:value="title"
-                    @input="title = $event.target.value"
+                    @input="updateInput"
+                    v-model="product.title"
                 >
             </div>
 
@@ -16,19 +16,19 @@
                 <textarea
                     id="description"
                     placeholder="Введите описание товара"
-                    v-bind:value="description"
-                    @input="description = $event.target.value"
+                    @input="updateInput"
+                    v-model="product.description"
                 ></textarea>
             </div>
 
             <div class="form__group">
-                <label for="img-link" class="points">Ссылка на изобржаение товара</label>
+                <label for="image" class="points">Ссылка на изобржаение товара</label>
                 <input 
                     type="img-link" 
-                    id="img-link" 
+                    id="image" 
                     placeholder="Введите ссылку"
-                    v-bind:value="image"
-                    @input="image = $event.target.value"
+                    @input="updateInput"
+                    v-model="product.image"
                 >
             </div>
 
@@ -38,16 +38,51 @@
                     type="text" 
                     id="price" 
                     placeholder="Введите цену"
-                    v-bind:value="price"
-                    @input="price = $event.target.value"
+                    @input="updateInput"
+                    v-model="product.price"
                 >
             </div>
 
-            <button class="add-btn" @click="addToList">
+            <button class="add-btn" @click="createProduct">
                 Добавить товар 
             </button>
           </form>
 </template>
+
+<script>
+export default {
+    name: 'VForm',
+    data() {
+        return {
+            product: {
+                title: '',
+                description: '',
+                image: '',
+                price: '',
+            }
+        };
+    },
+    props: {
+        modalValue: [String, Number]
+    },
+    methods: {
+        createProduct() {
+            this.product.id = Date.now();
+            this.$emit('create', this.product);
+            this.product = {
+                title: '',
+                description: '',
+                image: '',
+                price: '',
+            }
+        },
+        updateInput(event) {
+            this.$emit('update:modalValue', event.target.value)
+        }
+    }
+    
+}
+</script>
 
 
 <style lang="scss" scoped>
