@@ -10,6 +10,7 @@
         </div>
         <VProductlist 
           :products="products"
+          @remove="removeProduct"
         />
       </div>     
     </div>
@@ -74,6 +75,9 @@ export default {
       createProduct(product) {
         this.products.push(product);
       },
+      removeProduct(product) {
+        this.products = this.products.filter(p =>p.id !== product.id)
+      }
     }
 }
 </script>

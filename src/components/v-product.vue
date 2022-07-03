@@ -1,7 +1,6 @@
 <template>
-    <div class="product" v-for="product in products
-    " v-bind:key="product.id" :products="products">
-        <div class="product__trash" @click="trashClick">
+    <div class="product">
+        <div class="product__trash" @click="$emit('remove', product)">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_4_349)">
                 <path
@@ -37,8 +36,8 @@
 export default {
     name: 'VProduct',
     props: {
-        products: {
-             type: Object,
+        product: {
+            type: Object,
             required: true,
         }
     },

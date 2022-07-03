@@ -3,7 +3,8 @@
         <VProduct
             v-for="product in products"      
             v-bind:key="product.id"
-            :products="products"
+            :product="product"
+            @remove="$emit('remove', product)"
         />
     </div>
 </template>
