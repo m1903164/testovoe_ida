@@ -1,4 +1,4 @@
-# testovoe_ida
+# Тестовое задание для комапании idaproject, сделал Гришин Иван 
 
 ## Project setup
 ```
@@ -18,6 +18,11 @@ npm run build
 ### Lints and fixes files
 ```
 npm run lint
+```
+
+### Node version
+```
+v16.14.2
 ```
 
 ### Customize configuration
